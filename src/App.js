@@ -3,11 +3,13 @@ import './index.css'
 
 function App() {
   return (
-    <>
       <div className="container"> 
-        <Pregunta/>
+        <header>
+          <div className="contenido-principal contenido ">
+            <Pregunta/>
+          </div>
+        </header>
       </div>
-    </>
   );
 }
 

@@ -1,9 +1,13 @@
+import Pregunta from './components/Pregunta'
+import './index.css'
 
 function App() {
   return (
-    <div className="App">
-      Hola
-    </div>
+    <>
+      <div className="container"> 
+        <Pregunta/>
+      </div>
+    </>
   );
 }
 

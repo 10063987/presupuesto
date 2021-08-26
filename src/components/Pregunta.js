@@ -4,6 +4,7 @@ import React, { Fragment, useState } from 'react';
 const Pregunta = () => {
 
     const [cantidad, guardarCantidad] = useState(0)
+    const [error, guardarError] = useState(false)
 
     const definirPresupuesto = (e) =>{
         guardarCantidad(parseInt(e.target.value, 10))
@@ -12,8 +13,13 @@ const Pregunta = () => {
 const agregarPresupuesto = e =>{
     e.preventDefault()
 
-    // Validar
+    // Validar presupuesto
     console.log(e)
+    if(cantidad < 1 || isNaN(cantidad)){
+        guardarError(true)
+        return
+    }
+    guardarError(false)
 }
 
 

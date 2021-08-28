@@ -14,7 +14,6 @@ const Pregunta = ({guardarPresupuesto, guardarRestante, actualizarPregunta}) => 
         e.preventDefault()
 
         // Validar presupuesto
-        console.log(e)
         if(cantidad < 1 || isNaN(cantidad)){
             guardarError(true)
             return

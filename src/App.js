@@ -8,26 +8,32 @@ function App() {
   // Se define un estado para presupuesto inicial y el restante después de hacer gastos 
   const [presupuesto, guardarPresupuesto] = useState(0)
   const [restante, guardarRestante] = useState(0)
+  const [mostrarpregunta, actualizarPregunta] = useState(true)
 
   return (
       <div className="container"> 
         <header>
           <div className="contenido-principal contenido ">
-            {presupuesto ? null : 
-              <Pregunta
+            { mostrarpregunta ? 
+              (
+                <Pregunta
                 guardarPresupuesto = {guardarPresupuesto}
                 guardarRestante = {guardarRestante}
-              />
+                actualizarPregunta = {actualizarPregunta}
+                />
+              ) : 
+              (
+                <div className="row">
+                  <div className="one-half column">
+                    <Formulario />
+                  </div>
+                  <div className="one-half column">
+                    DOS
+                  </div>
+                </div>
+              )
             }
 
-            <div className="row">
-              <div className="one-half column">
-                <Formulario />
-              </div>
-              <div className="one-half column">
-                DOS
-              </div>
-            </div>
           </div>
         </header>
       </div>

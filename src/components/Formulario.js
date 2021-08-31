@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Error from './Error'
 import { nanoid } from 'nanoid'
 
-const Formulario = ({agregarNuevoGasto}) => {
+const Formulario = ({guardarGasto, guardarCrearGasto}) => {
 
     // const [nombregasto, guardarNombreGasto] = useState('')
     // const [cantidadgasto, guardarGasto] = useState(0)
@@ -37,7 +37,8 @@ const Formulario = ({agregarNuevoGasto}) => {
         gasto.id = nanoid()
 
         // Crear gasto
-        agregarNuevoGasto(gasto)
+        guardarGasto(gasto)
+        guardarCrearGasto(true)
         
 
         // Pasar gasto al componente principal

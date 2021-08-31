@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Error from './Error'
 import { nanoid } from 'nanoid'
 
-const Formulario = () => {
+const Formulario = ({agregarNuevoGasto}) => {
 
     // const [nombregasto, guardarNombreGasto] = useState('')
     // const [cantidadgasto, guardarGasto] = useState(0)
@@ -26,7 +26,7 @@ const Formulario = () => {
         e.preventDefault()
 
         // Validar
-        if(concepto.trim() === '' || cantidad.trim() === ''){
+        if( concepto.trim() === '' || cantidad < 1 || isNaN(cantidad) ){
             // Mensaje de error si hay
             actualizarError(true)
             return
@@ -34,16 +34,21 @@ const Formulario = () => {
         actualizarError(false)
 
         // Asignar ID
-        console.log(gasto)
         gasto.id = nanoid()
-        console.log(gasto)
 
         // Crear gasto
+        agregarNuevoGasto(gasto)
+        
 
         // Pasar gasto al componente principal
 
 
         // Reiniciar formulario 
+        actualizarGasto({
+            concepto: '',
+            cantidad: ''
+        })
+
 
 
 
@@ -57,7 +62,7 @@ const Formulario = () => {
                 onSubmit={submitGasto}
             >
                 <h2>Agrega tus gastos aquí</h2>
-                { error ? <Error mensaje={'Todos los campos son necesarios'} />  :  null }
+                { error ? <Error mensaje={'El gasto debe ser mayor a cero y el concepto no debe estar vacio'} />  :  null }
                 <div className="campo">
                     <label>Nombre Gasto</label>
                     <input

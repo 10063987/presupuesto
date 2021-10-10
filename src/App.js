@@ -17,6 +17,9 @@ function App() {
 
   // useEffect que actualiza el restante
   useEffect( () => {
+
+    console.log('App renderizando')
+    
     if(creargasto){
       // Agrega nuevo presupuesto
       guardarGastos([...gastos, gasto ])
@@ -29,7 +32,8 @@ function App() {
       guardarCrearGasto(false)
     }
     
-  }, [gasto])
+  }, [gasto, creargasto, gastos, restante])
+
 
 
   return (
